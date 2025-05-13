@@ -137,4 +137,10 @@ usbip bind -b 1-1
 
 ## 📝 来源
 
-### [USB over IP tunnel](https://openwrt.org/docs/guide-user/services/usb.iptunnel)
+### 服务端
+
+#### [USB over IP tunnel](https://openwrt.org/docs/guide-user/services/usb.iptunnel)
+
+### 客户端
+
+#### [usbip-win2](https://github.com/vadimgrn/usbip-win2)
