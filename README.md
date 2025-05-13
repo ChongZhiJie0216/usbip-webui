@@ -14,6 +14,13 @@
 
 ---
 
+## 📸 截图预览
+
+![alt text](image.png)
+![alt text](image-1.png)
+
+---
+
 ## 🗂 项目结构
 
 ```
@@ -127,3 +134,7 @@ usbip bind -b 1-1
 - Web 前端默认监听 8080 端口，可根据需要修改
 
 ---
+
+## 📝 来源
+
+### [USB over IP tunnel](https://openwrt.org/docs/guide-user/services/usb.iptunnel)
