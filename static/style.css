@@ -1,0 +1,55 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f4f6f8;
+    margin: 20px;
+    color: #333;
+}
+h1 {
+    text-align: center;
+    color: #444;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+thead {
+    background-color: #007BFF;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.status-bound {
+    color: green;
+    font-weight: bold;
+}
+.status-unbound {
+    color: red;
+    font-weight: bold;
+}
+.bind-btn, .unbind-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+.bind-btn {
+    background-color: #28a745;
+}
+.unbind-btn {
+    background-color: #dc3545;
+}
+.bind-btn:hover {
+    background-color: #218838;
+}
+.unbind-btn:hover {
+    background-color: #c82333;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>USBIP Device Manager</title>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>USBIP Device Manager</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Device Info</th>
+                <th>BUS ID</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="device-table-body">
+            <!-- Filled by JavaScript -->
+        </tbody>
+    </table>
+</body>
+</html>

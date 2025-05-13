@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  usbip-web:
+    container_name: usbip_web
+    build: .
+    ports:
+      - "8080:5000"
+    privileged: true
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - /sys/bus/usb:/sys/bus/usb
+      - /sys/devices:/sys/devices
+      - /dev:/dev
+    restart: unless-stopped
