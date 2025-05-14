@@ -17,8 +17,9 @@ The project runs inside a Docker container, but **USBIP commands are executed on
 
 ## Screenshot Preview
 
-![alt text](image.png)
-![alt text](image-1.png)
+| No Device              | Device                   |
+| ---------------------- | ------------------------ |
+| ![alt text](image.png) | ![alt text](image-1.png) |
 
 ---
 
