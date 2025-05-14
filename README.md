@@ -1,79 +1,92 @@
-# 🔌 USBIP Web 管理界面（基于 Flask + WebSocket）
+# USBIP Web Management Interface (Based on Flask + WebSocket)
 
-这是一个通过网页实时查看并控制 USBIP 设备绑定状态的轻量级管理工具，适用于 iStoreOS 等设备。  
-该项目部署在 Docker 容器中，**usbip 实际执行仍在宿主机完成**。
-
----
-
-## ✨ 功能特点
-
-- 实时显示 USB 设备列表（BUS ID / 设备信息 / 绑定状态）
-- 一键 Bind / Unbind 操作
-- WebSocket 实时刷新设备状态
-- 简洁美观的网页前端，适配移动端和桌面端
+This is a lightweight management tool that allows real-time viewing and control of USBIP device binding status through a web interface.
+It is designed for devices such as iStoreOS.
+The project runs inside a Docker container, but **USBIP commands are executed on the host machine.**
 
 ---
 
-## 📸 截图预览
+## Features and Highlights
+
+- Real-time display of USB device list (BUS ID / Device Info / Binding Status)
+- One-click Bind / Unbind operations
+- Real-time device status updates via WebSocket
+- Clean and responsive web interface, optimized for both mobile and desktop
+
+---
+
+## Screenshot Preview
 
 ![alt text](image.png)
 ![alt text](image-1.png)
 
 ---
 
-## 🗂 项目结构
+## Project Structure
 
 ```
 usbip_web/
-├── app.py               # Flask 主应用
-├── usbip_utils.py       # 调用宿主 usbip 的工具封装
-├── Dockerfile           # 容器构建配置
-├── docker-compose.yml   # 一键部署配置
+├── app.py               # Main Flask application
+├── usbip_utils.py       # Utility module for executing USBIP commands on the host
+├── Dockerfile           # Docker build configuration
+├── docker-compose.yml   # One-click deployment configuration
 ├── templates/
-│   └── index.html       # 网页模板
+│   └── index.html       # HTML template for the web interface
 └── static/
-    ├── main.js          # 前端逻辑 (含 WebSocket)
-    └── style.css        # 样式美化
+    ├── main.js          # Frontend logic (including WebSocket handling)
+    └── style.css        # Styling and layout
 ```
 
 ---
 
-## 🚀 部署方式（iStoreOS 环境）
+## System Requestment
 
-### 1️⃣ 准备项目
+- [iStoreOS](https://github.com/istoreos/istoreos) based OpenWRT
+- usbip-server
+- docker & docker-compose
 
-上传整个 `usbip-webui` 项目到 iStoreOS 路由器或使用以下命令克隆：
+## Prerequisites
 
-```bash
+- The host (iStoreOS) must have usbip properly installed and configured
+
+- The usbip command must be accessible from within the container (via volume mounting)
+
+- USB devices on the host must support USBIP and have the correct drivers bound/unbound as needed
+
+### 1. Prepare the Project
+
+Upload the entire usbip-webui project to your iStoreOS router, or clone it using the following commands:
+
+```
 git clone https://github.com/ChongZhiJie0216/usbip-webui
 cd usbip-webui
 ```
 
 ---
 
-### 2️⃣ 启动服务
+### 2. Start the Service
 
-使用 Docker Compose 启动：
+Launch the service using Docker Compose:
 
-```bash
+```
 docker-compose up -d
 ```
 
 ---
 
-### 3️⃣ 访问界面
+### 3. Access the Web Interface
 
-在浏览器中打开：
+Open your browser and visit:
 
 ```
 http://<你的iStoreOS IP>:8080
 ```
 
-即可查看并管理 USBIP 设备。
+You can now view and manage your USBIP devices.
 
 ---
 
-## ⚙ docker-compose.yml 内容
+### ⚙ docker-compose.yml
 
 ```yaml
 version: "3.8"
@@ -92,55 +105,31 @@ services:
     restart: unless-stopped
 ```
 
-### 📌 挂载说明
+---
 
-| 宿主路径       | 用途                         |
-| -------------- | ---------------------------- |
-| `/dev/bus/usb` | 读取设备信息                 |
-| `/sys/bus/usb` | 设备绑定状态判断             |
-| `/sys/devices` | 获取设备描述、驱动信息       |
-| `/dev`         | 某些系统交互需要访问设备节点 |
+### Mounting Instructions
+
+| Host Path      | Purpose                                                          |
+| -------------- | ---------------------------------------------------------------- |
+| `/dev/bus/usb` | Read USB device information                                      |
+| `/sys/bus/usb` | Determine device binding status                                  |
+| `/sys/devices` | Retrieve device descriptions and driver info                     |
+| `/dev`         | Required for certain system-level interactions with device nodes |
 
 ---
 
-## 🔧 前提要求
+## Notes
 
-- 宿主机（iStoreOS）已正确安装并配置好 `usbip`
-- `usbip` 命令需可通过容器访问（通过 volume 映射实现）
-- 宿主 USB 设备需支持 USBIP，并正确绑定/解绑驱动
+This container does not provide USB device sharing services (usbipd); it only offers a management frontend
 
----
+All actual USBIP operations are executed via the host's usbip tools
 
-## ✅ 示例操作
-
-查看设备：
-
-```bash
-usbip list -l
-```
-
-手动绑定（在宿主）：
-
-```bash
-usbip bind -b 1-1
-```
+The web interface listens on port 8080 by default; you can modify this as needed
 
 ---
 
-## 📌 注意事项
+## Sources
 
-- 本项目容器**不提供 USB 设备共享服务**（usbipd），仅提供管理前端
-- 所有实际操作依赖宿主机的 usbip 工具
-- Web 前端默认监听 8080 端口，可根据需要修改
-
----
-
-## 📝 来源
-
-### 服务端
-
-#### [USB over IP tunnel](https://openwrt.org/docs/guide-user/services/usb.iptunnel)
-
-### 客户端
-
-#### [usbip-win2](https://github.com/vadimgrn/usbip-win2)
+| Server Sides                                                                    | Client Sides                                                  |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [USB over IP tunnel](https://openwrt.org/docs/guide-user/services/usb.iptunnel) | Windows :[usbip-win2](https://github.com/vadimgrn/usbip-win2) |
