@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>USB over IP Device Manager</title>
-    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <title>USB/IP Web Interface</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
-    <h1>USB over IP Device Manager</h1>
+    <h1>USB/IP Web Interface</h1>
     <table>
         <thead>
             <tr>
@@ -20,10 +17,9 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody id="device-table-body">
-            <!-- Filled by JavaScript -->
-        </tbody>
+        <tbody id="device-table-body"></tbody>
     </table>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
-
 </html>

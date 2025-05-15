@@ -87,7 +87,7 @@ You can now view and manage your USBIP devices.
 
 ---
 
-### ⚙ docker-compose.yml
+###  docker-compose.yml
 
 ```yaml
 version: "3.8"
@@ -125,7 +125,7 @@ This container does not provide USB device sharing services (usbipd); it only of
 
 All actual USBIP operations are executed via the host's usbip tools
 
-The web interface listens on port 8080 by default; you can modify this as needed
+The web interface listens on port `8080`by default; you can modify this as needed
 
 ---
 
