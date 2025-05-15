@@ -1,13 +1,13 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>USB/IP Web Interface</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>USB/IP Web Interface</h1>
+    <h1>USB/IP Device Manager</h1>
     <table>
         <thead>
             <tr>
@@ -19,7 +19,7 @@
         </thead>
         <tbody id="device-table-body"></tbody>
     </table>
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='socket.io.js') }}"></script>
     <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
